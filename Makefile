@@ -101,6 +101,10 @@ simulator-tac-docking:
 	${WS} && \
 	ros2 launch dnt_simulator tac_docking.launch.py
 
+simulator-tac-pipeline:
+	${WS} && \
+	ros2 launch dnt_simulator tac_pipeline.launch.py
+
 sitl:
 	${WS} && \
 	docker-compose up ardupilot-sitl
