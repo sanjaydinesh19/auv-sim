@@ -107,7 +107,7 @@ simulator-tac-pipeline:
 
 sitl:
 	${WS} && \
-	docker-compose up ardupilot-sitl
+	docker compose up ardupilot-sitl
 
 
 changed:

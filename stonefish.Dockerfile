@@ -3,6 +3,12 @@ FROM ros:jazzy
 RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y git
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    ninja-build \
+    cmake \
+    binutils \
+    python3-colcon-common-extensions
 
 RUN git clone https://github.com/patrykcieslak/stonefish
 
@@ -23,5 +29,8 @@ RUN cd stonefish && \
 WORKDIR /workspace
 COPY . .
 RUN rm -rf ./build ./log ./install
+# Install uv (required by Makefile)
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.local/bin:${PATH}"
 RUN /bin/bash -c "make"
 CMD ["bash"]
