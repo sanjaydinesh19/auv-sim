@@ -25,9 +25,9 @@ The system requires multiple terminals running simultaneously.
 ---
 
 ### Terminal 1: Launch Simulator (Stonefish + TAC Pipeline)
-
+```
 ros2 launch dnt_simulator tac_pipeline.launch.py
-
+```
 This starts:
 - The Stonefish simulation environment
 - TAC pipeline configuration
@@ -36,9 +36,9 @@ This starts:
 ---
 
 ### Terminal 2: Start ArduPilot SITL
-
+```
 make sitl
-
+```
 This initializes:
 - Software-in-the-loop ArduPilot instance
 - Communication with the simulator
@@ -46,9 +46,9 @@ This initializes:
 ---
 
 ### Terminal 3: Launch QGroundControl
-
+```
 ./QGroundControl.AppImage
-
+```
 This provides:
 - Ground control station interface
 - Telemetry visualization
@@ -57,11 +57,11 @@ This provides:
 ---
 
 ### Terminal 4: Run Perception / Control Node
-
+```
 cd ~/DNT/Sim/mira_sim
 source install/setup.bash
 ros2 run orca_follower follower_node
-
+```
 This runs:
 - Custom ROS 2 node for AUV behavior
 - Perception pipeline (e.g., pipeline detection)
