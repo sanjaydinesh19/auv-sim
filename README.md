@@ -69,6 +69,39 @@ This runs:
 
 ---
 
+## Running Pipeline Follower
+
+### Terminal 1 - Launch TAC Pipeline Sim
+
+```
+ros2 launch dnt_simulator tac_pipeline.launch.py
+```
+
+### Terminal 2 - Run Software In the Loop
+
+```
+make sitl
+```
+
+### Terminal 3 - Run MIRA Master with venv
+
+```
+source .venv/bin/activate
+ros2 run mira2_control_master alt_master --ros-args -p pixhawk_address:=tcp:localhost:5760
+```
+
+### Terminal 4 - Run Node
+
+```
+ros2 run pipeline_follower pipeline_follower_node
+```
+
+### Terminal 5 - View Debug Camera
+
+```
+ros2 run rqt_image_view rqt_image_view /pipeline_follower/debug_image
+```
+
 ## Notes
 
 - Ensure all dependencies are installed and the workspace is built before running.
@@ -85,6 +118,7 @@ mira_sim/
 │   ├── pipeline_detector/
 │   ├── orca_follower/
 │   ├── stonefish_ros2/
+|   ├── pipeline_follower/
 ├── install/
 ├── build/
 ├── log/
